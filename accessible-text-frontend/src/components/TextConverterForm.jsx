@@ -22,38 +22,38 @@ const TextConverterForm = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-            <div className="p-6 max-w-lg w-full bg-white rounded-2xl shadow-2xl transform transition-all duration-300 hover:scale-105">
-                <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-                    🌟 Accessible Text Converter 🌟
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+            <div className="p-8 max-w-lg w-full bg-white rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-2xl">
+                <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
+                    Accessible Text Converter
                 </h2>
                 <textarea
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder="Enter text here..."
-                    className="w-full p-4 mb-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none transition"
-                    rows={4}
+                    placeholder="Type or paste your text here..."
+                    className="w-full p-4 mb-6 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition duration-200 text-gray-700"
+                    rows={5}
                 />
                 <select
                     value={selectedOption}
                     onChange={(e) => setSelectedOption(e.target.value)}
-                    className="w-full p-3 mb-4 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+                    className="w-full p-3 mb-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-gray-600"
                 >
-                    <option value="toUpperCase">🔠 Convert to Uppercase</option>
-                    <option value="toLowerCase">🔡 Convert to Lowercase</option>
-                    <option value="textToFile">💾 Save Text to File</option>
+                    <option value="toUpperCase">Convert to Uppercase</option>
+                    <option value="toLowerCase">Convert to Lowercase</option>
+                    <option value="textToFile">Save Text to File</option>
                 </select>
                 <button
                     onClick={handleConvert}
-                    className="w-full p-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+                    className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                    Convert 🚀
+                    Convert
                 </button>
                 {convertedText && (
-                    <div className="mt-6 p-4 bg-gray-100 rounded-lg shadow-inner">
-                        <p className="text-lg font-semibold text-gray-700 mb-2">Converted Text:</p>
-                        <div className="p-2 bg-gray-200 rounded-lg">
-                            <p className="text-gray-900">{convertedText}</p>
+                    <div className="mt-8 p-4 bg-gray-100 rounded-lg shadow-inner">
+                        <p className="text-lg font-semibold text-gray-800 mb-2">Converted Text:</p>
+                        <div className="p-3 bg-white border border-gray-200 rounded-lg">
+                            <p className="text-gray-700">{convertedText}</p>
                         </div>
                     </div>
                 )}
