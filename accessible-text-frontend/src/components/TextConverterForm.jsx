@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const TextConverterForm = () => {
     const [text, setText] = useState("");
@@ -22,42 +24,61 @@ const TextConverterForm = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="p-8 max-w-lg w-full bg-white rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-2xl">
-                <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
-                    Accessible Text Converter
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white p-4">
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="p-8 max-w-lg w-full bg-gray-900 rounded-xl shadow-lg transform transition-all duration-300 hover:shadow-2xl"
+            >
+                <h2 className="text-4xl font-extrabold text-center mb-6 text-blue-400 tracking-wider">
+                    Text Converter Pro
                 </h2>
-                <textarea
+                <p className="text-sm text-center text-gray-400 mb-8 italic">"Empowering your text transformation"</p>
+                <motion.textarea
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder="Type or paste your text here..."
-                    className="w-full p-4 mb-6 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition duration-200 text-gray-700"
+                    placeholder="Type your text here..."
+                    className="w-full p-4 mb-6 border border-gray-700 bg-gray-800 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-200 transition duration-300 resize-none"
                     rows={5}
                 />
-                <select
+                <motion.select
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                     value={selectedOption}
                     onChange={(e) => setSelectedOption(e.target.value)}
-                    className="w-full p-3 mb-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 text-gray-600"
+                    className="w-full p-3 mb-6 border border-gray-700 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-200 transition duration-300"
                 >
                     <option value="toUpperCase">Convert to Uppercase</option>
                     <option value="toLowerCase">Convert to Lowercase</option>
                     <option value="textToFile">Save Text to File</option>
-                </select>
-                <button
+                </motion.select>
+                <motion.button
+                    whileHover={{ scale: 1.05, backgroundColor: "#1d4ed8" }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={handleConvert}
-                    className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 flex items-center justify-center"
                 >
-                    Convert
-                </button>
+                    <span className="mr-2">Convert</span> <FiArrowRight />
+                </motion.button>
                 {convertedText && (
-                    <div className="mt-8 p-4 bg-gray-100 rounded-lg shadow-inner">
-                        <p className="text-lg font-semibold text-gray-800 mb-2">Converted Text:</p>
-                        <div className="p-3 bg-white border border-gray-200 rounded-lg">
-                            <p className="text-gray-700">{convertedText}</p>
+                    <motion.div
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        className="mt-8 p-4 bg-gray-800 rounded-lg shadow-inner"
+                    >
+                        <p className="text-lg font-semibold text-blue-400 mb-2">Converted Text:</p>
+                        <div className="p-3 bg-gray-900 border border-gray-700 rounded-lg">
+                            <p className="text-gray-200">{convertedText}</p>
                         </div>
-                    </div>
+                    </motion.div>
                 )}
-            </div>
+            </motion.div>
         </div>
     );
 };
